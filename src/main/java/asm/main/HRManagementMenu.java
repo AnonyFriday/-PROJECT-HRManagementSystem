@@ -345,8 +345,8 @@ public final class HRManagementMenu {
                     } else {
                         this.managementDept.displayAllEmployees(founds);
                     }
-                }  
-                
+                }
+
             } catch (NumberFormatException ex) {
                 System.out.println("Please enter number only.");
             } catch (IllegalArgumentException ex) {

@@ -10,7 +10,7 @@ import asm.utils.validators.EmployeeValidator;
  *
  * @author duyvu
  */
-public final class AsmConstants implements AdministratorConstants, BusinessConstants, EmployeeConstants {
+public final class AsmConstants {
 
     // Force the class to not create + be inherited by another class
     private AsmConstants() {
@@ -49,6 +49,12 @@ public final class AsmConstants implements AdministratorConstants, BusinessConst
     public final static String TITLE_FIELD_INPUT(String field) {
         return "-Enter " + field.toUpperCase() + ": ";
     }
+
+    // =========================================================
+    // Title for input box decoration
+    // =========================================================
+    public final static String TITLE_ADMIN_INPUT_OUTPUT_ALL_FIELD = "\t------------(Administrator)------------";
+    public final static String TITLE_BUSINESS_INPUT_OUTPUT_ALL_FIELD = "\t------------(Business)-----------------";
 
     // =========================================================
     // Generic Title for fields exceptions
