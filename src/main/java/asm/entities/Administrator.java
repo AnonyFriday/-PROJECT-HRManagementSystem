@@ -120,7 +120,7 @@ public final class Administrator extends Employee {
                 setSubsidy(Float.parseFloat(sc.nextLine()));
                 break;
             } catch (NumberFormatException ex) {
-                System.out.println(AsmConstants.NUMBER_FORMAT_ONLY);
+                System.out.println(AsmConstants.NUMBER_FORMAT_FLOAT_ONLY);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }

@@ -8,7 +8,7 @@ package asm.utils.constants;
  *
  * @author duyvu
  */
-public final class AsmConstants implements AdministratorConstants {
+public final class AsmConstants implements AdministratorConstants, BusinessConstants {
 
     // Force the class to not create + be inherited by another class
     private AsmConstants() {
@@ -18,9 +18,11 @@ public final class AsmConstants implements AdministratorConstants {
     // Title for input fields
     // =========================================================
     public final static String TITLE_INPUT_SUBSIDY = "-Enter Subsidy: ";
+    public final static String TITLE_INPUT_REVENUE = "-Enter Revenue: ";
+    
 
     // =========================================================
     // Title for fields exceptions
     // =========================================================
-    public final static String NUMBER_FORMAT_ONLY = "Accept Float type only. Please try again.";
+    public final static String NUMBER_FORMAT_FLOAT_ONLY = "Accept Float type only. Please try again.";
 }

@@ -5,6 +5,7 @@
 package asm.entities;
 
 import asm.enums.EmployeeType;
+import asm.utils.constants.AsmConstants;
 import asm.utils.validators.BusinessValidator;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -48,7 +49,7 @@ public final class Business extends Employee {
             boolean gender,
             LocalDate dateOfBirth, float salaryBasic,
             byte experience, float revenue) {
-        
+
         super(name, id, gender, dateOfBirth, salaryBasic, experience);
         this.revenue = revenue;
 
@@ -126,9 +127,9 @@ public final class Business extends Employee {
      */
     @Override
     public void inputAllFieldsEmployee(boolean isUpdateMode) {
-        System.out.println("\t------------(Business)-----------------");
+        System.out.println(AsmConstants.TITLE_BUSINESS_INPUT_OUTPUT_ALL_FIELD);
         super.inputAllFieldsEmployee(isUpdateMode);
-        
+
         Scanner sc = new Scanner(System.in);
         this.inputFieldRevenue(sc);
     }
@@ -141,11 +142,11 @@ public final class Business extends Employee {
     public void inputFieldRevenue(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter Revenue: ");
+                System.out.print(AsmConstants.TITLE_INPUT_REVENUE);
                 setRevenue(Float.parseFloat(sc.nextLine()));
                 break;
             } catch (NumberFormatException ex) {
-                System.out.println("Revenue's Float type. Please try again.");
+                System.out.println(AsmConstants.NUMBER_FORMAT_FLOAT_ONLY);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
@@ -157,9 +158,9 @@ public final class Business extends Employee {
      */
     @Override
     public void outputEmployee(boolean isComputeSalaryNet) {
-        System.out.println("\t------------(Business)-----------------");
+        System.out.println(AsmConstants.TITLE_BUSINESS_INPUT_OUTPUT_ALL_FIELD);
         super.outputEmployee(isComputeSalaryNet);
-        
+
         System.out.printf("%-55s%-15s%-15s\n", " ", "Revenue", "Bonus");
         System.out.printf("%-55s%-15.4f%-15.4f\n", " ", getRevenue(), getBonus());
     }
