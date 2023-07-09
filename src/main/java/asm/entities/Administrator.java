@@ -5,6 +5,7 @@
 package asm.entities;
 
 import asm.enums.EmployeeType;
+import asm.utils.constants.AsmConstants;
 import asm.utils.validators.AdministratorValidator;
 import java.time.LocalDate;
 import java.util.Date;
@@ -100,9 +101,9 @@ public final class Administrator extends Employee {
      */
     @Override
     public void inputAllFieldsEmployee(boolean isUpdateMode) {
-        System.out.println("\t------------(Administrator)------------");
+        System.out.println(AsmConstants.TITLE_ADMIN_INPUT_OUTPUT_ALL_FIELD);
         super.inputAllFieldsEmployee(isUpdateMode);
-        
+
         Scanner sc = new Scanner(System.in);
         this.inputFieldSubsidy(sc);
     }
@@ -115,11 +116,11 @@ public final class Administrator extends Employee {
     public void inputFieldSubsidy(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter Subsidy: ");
+                System.out.print(AsmConstants.TITLE_INPUT_SUBSIDY);
                 setSubsidy(Float.parseFloat(sc.nextLine()));
                 break;
             } catch (NumberFormatException ex) {
-                System.out.println("Subsidy's Float type. Please try again.");
+                System.out.println(AsmConstants.NUMBER_FORMAT_ONLY);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
@@ -131,9 +132,9 @@ public final class Administrator extends Employee {
      */
     @Override
     public void outputEmployee(boolean isComputeSalaryNet) {
-        System.out.println("\t------------(Administrator)------------");
+        System.out.println(AsmConstants.TITLE_ADMIN_INPUT_OUTPUT_ALL_FIELD);
         super.outputEmployee(isComputeSalaryNet);
-        
+
         System.out.printf("%-55s%-15s\n", " ", "Subsidy");
         System.out.printf("%-55s%-15.4f\n", " ", getSubsidy());
     }

@@ -8,12 +8,19 @@ package asm.utils.constants;
  *
  * @author duyvu
  */
-public abstract class ValidationConstants {
+public final class AsmConstants implements AdministratorConstants {
+
+    // Force the class to not create + be inherited by another class
+    private AsmConstants() {
+    }
 
     // =========================================================
-    // General Validation Constants
+    // Title for input fields
     // =========================================================
+    public final static String TITLE_INPUT_SUBSIDY = "-Enter Subsidy: ";
+
     // =========================================================
-    // Business
+    // Title for fields exceptions
     // =========================================================
+    public final static String NUMBER_FORMAT_ONLY = "Accept Float type only. Please try again.";
 }
