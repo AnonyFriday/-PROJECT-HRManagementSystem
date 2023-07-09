@@ -6,7 +6,7 @@ package asm.entities;
 
 import asm.enums.EmployeeType;
 import asm.enums.SearchingCondition;
-import asm.enums.UpdateField;
+//import asm.enums.UpdateField;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;

@@ -142,11 +142,11 @@ public final class Business extends Employee {
     public void inputFieldRevenue(Scanner sc) {
         do {
             try {
-                System.out.print(AsmConstants.TITLE_INPUT_REVENUE);
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.REVENUE));
                 setRevenue(Float.parseFloat(sc.nextLine()));
                 break;
             } catch (NumberFormatException ex) {
-                System.out.println(AsmConstants.NUMBER_FORMAT_FLOAT_ONLY);
+                System.out.println(AsmConstants.EX_FIELD_DATATYPE_ONLY(AsmConstants.REVENUE, AsmConstants.FLOAT));
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }

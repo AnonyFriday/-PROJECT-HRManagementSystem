@@ -5,6 +5,7 @@
 package asm.utils.validators;
 
 import asm.entities.Employee;
+import asm.utils.constants.AsmConstants;
 
 /**
  *
@@ -17,7 +18,7 @@ public abstract class MenuValidator implements Validator {
     // =========================================================
     public static final void validateAddEmployeeToList(Employee emp) throws NullPointerException {
         if (Validator.isNullObject(emp)) {
-            throw new NullPointerException("Employee is null. Please try again");
+            throw new NullPointerException(AsmConstants.EX_FIELD_CANNOT_EMPTY(AsmConstants.EMPLOYEE));
         }
     }
 
@@ -28,7 +29,7 @@ public abstract class MenuValidator implements Validator {
     // =========================================================
     public static final void validateStringKeyword(String keyword) throws IllegalArgumentException {
         if (Validator.isNullStringOrEmptyString(keyword)) {
-            throw new IllegalArgumentException("Keyword cannot be null. Please try again.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_EMPTY(keyword));
         }
     }
 }

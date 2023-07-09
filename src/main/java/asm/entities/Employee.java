@@ -5,6 +5,7 @@
 package asm.entities;
 
 import asm.enums.EmployeeType;
+import asm.utils.constants.AsmConstants;
 import asm.utils.validators.EmployeeValidator;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -181,7 +182,7 @@ public abstract class Employee {
     }
 
     // =========================================================
-    // ID 
+    // ID   
     // =========================================================
     /**
      * Setting ID Value
@@ -301,7 +302,7 @@ public abstract class Employee {
 
             this.dateOfBirth = formattedDOB;
         } catch (DateTimeParseException ex) {
-            throw new DateTimeParseException("DOB has to be in the format dd/MM/yyyy", dateOfBirth, 0);
+            throw new DateTimeParseException(AsmConstants.EX_FIELD_BE_IN_FORMAT(AsmConstants.DOB, EmployeeValidator.DATE_FORMAT), dateOfBirth, 0);
         } catch (IllegalArgumentException ex) {
             throw new IllegalAccessException(ex.getMessage());
         } catch (Exception ex) {
@@ -329,9 +330,9 @@ public abstract class Employee {
         }
     }
 
-// =========================================================
-// Input & Output
-// =========================================================
+    // =========================================================
+    // Input & Output
+    // =========================================================
     /**
      * Input Employee based on those basic fields
      *
@@ -362,7 +363,7 @@ public abstract class Employee {
     public void inputFieldId(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter ID: ");
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.ID));
                 setId(sc.nextLine());
                 break;
             } catch (Exception ex) {
@@ -379,7 +380,7 @@ public abstract class Employee {
     public void inputFieldName(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter Name: ");
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.NAME));
                 setName(sc.nextLine());
                 break;
             } catch (Exception ex) {
@@ -396,7 +397,7 @@ public abstract class Employee {
     public void inputFieldDateOfBirth(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter Date Of Birth: ");
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.DOB));
                 setDateOfBirth(sc.nextLine());
                 break;
             } catch (Exception ex) {
@@ -413,7 +414,7 @@ public abstract class Employee {
     public void inputFieldGender(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter Gender: ");
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.GENDER));
                 setGender(sc.nextLine());
                 break;
             } catch (Exception ex) {
@@ -430,11 +431,11 @@ public abstract class Employee {
     public void inputFieldExperience(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter Experience: ");
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.EXPERIENCE));
                 setExperience(Byte.parseByte(sc.nextLine()));
                 break;
             } catch (NumberFormatException ex) {
-                System.out.println("Experience's Byte type. Please try again");
+                System.out.println(AsmConstants.EX_FIELD_DATATYPE_ONLY(AsmConstants.EXPERIENCE, AsmConstants.BYTE));
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
@@ -449,11 +450,11 @@ public abstract class Employee {
     public void inputFieldSalaryBasic(Scanner sc) {
         do {
             try {
-                System.out.print("-Enter Salary Basic: ");
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.SALARY_BASIC));
                 setSalaryBasic(Float.parseFloat(sc.nextLine()));
                 break;
             } catch (NumberFormatException ex) {
-                System.out.println("Salary Basic's Float type. Please try again");
+                System.out.println(AsmConstants.EX_FIELD_DATATYPE_ONLY(AsmConstants.SALARY_BASIC, AsmConstants.FLOAT));
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }

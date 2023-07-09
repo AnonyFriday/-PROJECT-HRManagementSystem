@@ -116,11 +116,11 @@ public final class Administrator extends Employee {
     public void inputFieldSubsidy(Scanner sc) {
         do {
             try {
-                System.out.print(AsmConstants.TITLE_INPUT_SUBSIDY);
+                System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.SUBSIDY));
                 setSubsidy(Float.parseFloat(sc.nextLine()));
                 break;
             } catch (NumberFormatException ex) {
-                System.out.println(AsmConstants.NUMBER_FORMAT_FLOAT_ONLY);
+                System.out.println(AsmConstants.EX_FIELD_DATATYPE_ONLY(AsmConstants.SUBSIDY, AsmConstants.FLOAT));
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }

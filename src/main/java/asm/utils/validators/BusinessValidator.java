@@ -4,6 +4,8 @@
  */
 package asm.utils.validators;
 
+import asm.utils.constants.AsmConstants;
+
 /**
  *
  * @author duyvu
@@ -21,7 +23,7 @@ public abstract class BusinessValidator implements Validator {
      */
     public static void validateRevenue(float revenue) throws IllegalArgumentException {
         if (!Validator.isPositiveNumber(revenue, true)) {
-            throw new IllegalArgumentException("Revenue cannot be less than 0.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_LESS_THAN_VALUE(AsmConstants.REVENUE, 0));
         }
     }
 }

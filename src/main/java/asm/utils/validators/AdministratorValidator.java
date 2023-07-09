@@ -4,6 +4,8 @@
  */
 package asm.utils.validators;
 
+import asm.utils.constants.AsmConstants;
+
 /**
  *
  * @author duyvu
@@ -21,7 +23,7 @@ public abstract class AdministratorValidator implements Validator {
      */
     public static void validateSubsidy(float subsidy) throws IllegalArgumentException {
         if (!Validator.isPositiveNumber(subsidy, true)) {
-            throw new IllegalArgumentException("Subsidy cannot be less than 0.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_LESS_THAN_VALUE(AsmConstants.SUBSIDY, 0));
         }
     }
 }

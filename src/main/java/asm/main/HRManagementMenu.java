@@ -11,9 +11,8 @@ import asm.entities.HR;
 import asm.entities.IManagement;
 import asm.enums.EmployeeType;
 import asm.enums.SearchingCondition;
-import asm.enums.UpdateField;
+import asm.utils.constants.AsmConstants;
 import asm.utils.validators.MenuValidator;
-import asm.utils.validators.Validator;
 import com.github.javafaker.Faker;
 import java.time.LocalDate;
 import java.time.Year;
@@ -86,7 +85,7 @@ public final class HRManagementMenu {
         do {
             displayMenu();
 
-            System.out.print("-Enter your choice: ");
+            System.out.print(AsmConstants.TITLE_FIELD_INPUT(AsmConstants.CHOICE));
             try {
 
                 choice = Byte.parseByte(sc.nextLine());
@@ -212,7 +211,6 @@ public final class HRManagementMenu {
                 System.out.println(ex.getMessage());
                 // Logging
             }
-
         } while (empChoice != 0);
     }
 
@@ -249,7 +247,7 @@ public final class HRManagementMenu {
                         break;
                     }
                     case 0: {
-                        System.out.println("Exit Displaying.");
+                        System.out.println("Exit Displaying Employee.");
                         break;
                     }
                     default: {
@@ -317,6 +315,7 @@ public final class HRManagementMenu {
                     MenuValidator.validateStringKeyword(keyword);
                 }
 
+                // Choosing Choice
                 switch (conditionChoice) {
                     case 1: {
                         // Return employee with the given ID
@@ -330,7 +329,7 @@ public final class HRManagementMenu {
                         break;
                     }
                     case 0: {
-                        System.out.println("Exiting employee search.");
+                        System.out.println("Exiting Searching Employee.");
                         break;
                     }
                     default: {
@@ -346,8 +345,8 @@ public final class HRManagementMenu {
                     } else {
                         this.managementDept.displayAllEmployees(founds);
                     }
-                }
-
+                }  
+                
             } catch (NumberFormatException ex) {
                 System.out.println("Please enter number only.");
             } catch (IllegalArgumentException ex) {
@@ -380,13 +379,14 @@ public final class HRManagementMenu {
 
         do {
             try {
+                // Choose Remove Mode
                 System.out.print("-Enter employee's id to remove (format: HR*****) (0 - Exit): ");
                 keywordId = sc.nextLine();
                 MenuValidator.validateStringKeyword(keywordId);
 
                 // Terminate the loop if user don't want to continue      
                 if (keywordId.equals(exitCode)) {
-                    System.out.println("Exiting employee remove.");
+                    System.out.println("Exiting Removing Employee.");
                     break;
                 }
 
@@ -395,8 +395,9 @@ public final class HRManagementMenu {
                     System.out.println("Remove employee [" + keywordId + "] sucessfully.");
                     break;
                 } else {
-                    System.out.println("Employee [" + keywordId + "] is not exist.");
+                    System.out.println("Employee [" + keywordId + "] is not found. Please try again.");
                 }
+
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             } catch (Exception ex) {
@@ -423,13 +424,13 @@ public final class HRManagementMenu {
 
                 // Exiting Update
                 if (keywordId.equals(exitCode)) {
-                    System.out.println("Exiting employee update.");
+                    System.out.println("Exiting Updating Employee.");
                     break;
                 }
 
                 // Update all fields
                 if (this.managementDept.updateEmployeeById(keywordId)) {
-                    System.out.println("Update Sucessfully.");
+                    System.out.println("Update employee [" + keywordId + "] sucessfully.");
                     break;
                 } else {
                     throw new Exception("Employee [" + keywordId + "] is not found. Please try again.");
@@ -446,7 +447,7 @@ public final class HRManagementMenu {
 
     /**
      * [10] [ERROR]
-     * Option to Update Information based on Id
+     * Option to Update Chosen Fields based on Id
      *
      * Update all fields Mode
      * Update specific field

@@ -4,6 +4,7 @@
  */
 package asm.utils.validators;
 
+import asm.utils.constants.AsmConstants;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +27,8 @@ public abstract class EmployeeValidator implements Validator {
     // =========================================================
     private final static byte MAX_NAME_SIZE = 50;
     public final static String DATE_FORMAT = "dd/MM/yyyy";
+    public final static String ID_FORMAT = "HR***** (* is a digit)";
+    public final static String GENDER_FORMAT = "'true' or 'fasle'";
 
     // =========================================================
     // Experience
@@ -41,9 +44,9 @@ public abstract class EmployeeValidator implements Validator {
      */
     public static void validateId(String str) throws IllegalArgumentException {
         if (Validator.isNullStringOrEmptyString(str)) {
-            throw new IllegalArgumentException("ID cannot be empty");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_EMPTY(AsmConstants.ID));
         } else if (!str.matches("^HR\\d{5}$")) {
-            throw new IllegalArgumentException("ID's format must be HR***** (* is a digit).");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_BE_IN_FORMAT(AsmConstants.ID, EmployeeValidator.ID_FORMAT));
         }
     }
 
@@ -58,9 +61,9 @@ public abstract class EmployeeValidator implements Validator {
      */
     public static void validateName(String str) throws IllegalArgumentException {
         if (Validator.isNullStringOrEmptyString(str)) {
-            throw new IllegalArgumentException("Name cannot be empty.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_EMPTY(AsmConstants.NAME));
         } else if (!Validator.isNumberInBound(str.length(), 0, EmployeeValidator.MAX_NAME_SIZE)) {
-            throw new IllegalArgumentException("Name cannot exceed " + EmployeeValidator.MAX_NAME_SIZE + " characters");
+            throw new IllegalArgumentException(AsmConstants.EX_STRING_CANNOT_EXCEED_NUM_CHARACTERS(AsmConstants.NAME, EmployeeValidator.MAX_NAME_SIZE));
         }
     }
 
@@ -73,7 +76,7 @@ public abstract class EmployeeValidator implements Validator {
      */
     public static void validateExperience(double exp) throws IllegalArgumentException {
         if (!Validator.isPositiveNumber(exp, false)) {
-            throw new IllegalArgumentException("Experience cannot be less than or equals to 0.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_LESS_THAN_OR_EQUALS_VALUE(AsmConstants.EXPERIENCE, 0));
         }
     }
 
@@ -88,7 +91,7 @@ public abstract class EmployeeValidator implements Validator {
      */
     public static void validateGender(String value) throws IllegalArgumentException {
         if (!value.matches("^(true|false)$")) {
-            throw new IllegalArgumentException("Gender only accept 'true' or 'false' value.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_VALUE_ONLY(AsmConstants.GENDER, EmployeeValidator.GENDER_FORMAT));
         }
     }
 
@@ -103,7 +106,7 @@ public abstract class EmployeeValidator implements Validator {
      */
     public static void validateDateOfBirth(String dateOfBirth) throws IllegalArgumentException {
         if (Validator.isNullStringOrEmptyString(dateOfBirth)) {
-            throw new IllegalArgumentException("DOB cannot be empty or null.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_EMPTY(AsmConstants.DOB));
         }
     }
 
@@ -112,7 +115,7 @@ public abstract class EmployeeValidator implements Validator {
         byte age = (byte) Period.between(dateOfBirth, currentDate).getYears();
 
         if (age < 18) {
-            throw new IllegalArgumentException("Age has to be greater than or equals to 18.");
+            throw new IllegalArgumentException(AsmConstants.EX_AGE_GREATER_THAN_OR_EQUALS_VALUE(18));
         }
     }
 
@@ -127,7 +130,7 @@ public abstract class EmployeeValidator implements Validator {
      */
     public static void validateSalaryBasic(float salary) throws IllegalArgumentException {
         if (!Validator.isPositiveNumber(salary, false)) {
-            throw new IllegalArgumentException("Salary Basic cannot be less than or equals to 0.");
+            throw new IllegalArgumentException(AsmConstants.EX_FIELD_CANNOT_LESS_THAN_OR_EQUALS_VALUE(AsmConstants.SALARY_BASIC, 0));
         }
     }
 }
