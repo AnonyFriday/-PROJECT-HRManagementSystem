@@ -22,14 +22,15 @@ import java.util.Scanner;
 
 /**
  * Finished:
- * - Option 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+ * - Option 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11[Testing Purpose]
  * - Reformat Console UI
+ * - Constant String Literals
  *
- * Unfinished:
- * - Advanced option 10 for updating selective field
- * - Constant String
+ * Could Improve
+ * - Advanced option 10 for updating selective fields, not all fields (On Testing)
  * - Better Comment
- * - Better Documentation
+ * - Documentation
+ * - JavaFX for better UI
  *
  * @author duyvu
  */
